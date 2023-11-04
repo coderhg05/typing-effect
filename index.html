@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typing Effect</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="new"><br /><br /><br /></div>
+    <div id="typedtext"></div>
+
+    <audio controls autoplay>
+      <source src="Wellerman_Nathan_Evans.mp3" type="audio/mpeg" />
+    </audio>
+    <p>Wellerman by Nathan Evans</p>
+    <script>
+      var aText = new Array(
+        ".....",
+        "There once was a ship that put to sea",
+        "The name of the ship was the Billy O' Tea",
+        "The winds blew up, her bow dipped down",
+        "Oh blow, my bully boys, blow (huh)",
+        "Soon may the Wellerman come",
+        "To bring us sugar and tea and rum",
+        "One day, when the tonguing is done",
+        "We'll take our leave and go",
+        "She'd not been two weeks from shore",
+        "When down on her a right whale bore",
+        "The captain called all hands and swore",
+        "He'd take that whale in tow (huh)",
+        "Soon may the Wellerman come",  
+        "To bring us sugar and tea and rum",
+        "One day, when the tonguing is done",
+        "We'll take our leave and go",
+        "Da-da-da-da-da",
+        "Da-da-da-da-da-da-da", 
+        "Da-da-da-da-da-da-da-da-da-da-da",
+        "Before the boat had hit the water",
+        "The whale's tail came up and caught her",
+        "All hands to the side, harpooned and fought her",
+        "When she dived down low (huh)",
+        "Soon may the Wellerman come",
+        "To bring us sugar and tea and rum",
+        "One day, when the tonguing is done",
+        "We'll take our leave and go",
+        "No line was cut, no whale was freed",
+        "The captain's mind was not of greed",
+        "And he belonged to the Whaleman's creed",
+        "She took that ship in tow (huh)",
+        "Soon may the Wellerman come",
+        "To bring us sugar and tea and rum",
+        "One day, when the tonguing is done",
+        "We'll take our leave and go",
+        "Da-da-da-da-da",
+        "Da-da-da-da-da-da-da",
+        "Da-da-da-da-da-da-da-da-da-da-da",
+        "For forty days or even more",
+        "The line went slack then tight once more",
+        "All boats were lost, there were only four",
+        "But still that whale did go (huh)",
+        "Soon may the Wellerman come",
+        "To bring us sugar and tea and rum",
+        "One day, when the tonguing is done",
+        "We'll take our leave and go",
+        "As far as I've heard, the fight's still on",
+       "The line's not cut, and the whale's not gone",
+       "The Wellerman makes his regular call",
+       "To encourage the captain, crew and all (huh)",
+       "Soon may the Wellerman come",
+       "To bring us sugar and tea and rum",
+       "One day, when the tonguing is done",
+       "We'll take our leave and go",
+       "Soon may the Wellerman come",
+       "To bring us sugar and tea and rum",
+       "One day, when the tonguing is done",
+       "We'll take our leave and go",
+      );
+      var iSpeed = 90; 
+      var iIndex = 1; 
+      var iArrLength = aText[0].length; 
+      var iScrollAt = 1; 
+
+      var iTextPos = 0; 
+      var sContents = ""; 
+      var iRow; 
+
+      function typewriter() {
+        sContents = " ";
+        iRow = Math.max(0, iIndex - iScrollAt);
+        var destination = document.getElementById("typedtext");
+
+        while (iRow < iIndex) {
+          sContents += aText[iRow++] + "<br />";
+        }
+        destination.innerHTML =
+          sContents + aText[iIndex].substring(0, iTextPos) + "_";
+        if (iTextPos++ == iArrLength) {
+          iTextPos = 0;
+          iIndex++;
+          if (iIndex != aText.length) {
+            iArrLength = aText[iIndex].length;
+            setTimeout("typewriter()", 100);
+          }
+        } else {
+          setTimeout("typewriter()", iSpeed);
+        }
+      }
+
+      typewriter();
+    </script>
+  </body>
+</html>
